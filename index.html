@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Buildwise Accounting — MTD</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html,body{min-height:100%;background:#111;display:flex;justify-content:center;font-family:'Inter',sans-serif;}
+#app{background:#111;width:100%;max-width:390px;min-height:100vh;display:flex;flex-direction:column;}
+.screen{display:none;flex-direction:column;flex:1;}
+.screen.on{display:flex;}
+.top-strip{background:#F5C800;padding:12px 20px 10px;display:flex;flex-direction:column;align-items:flex-start;}
+.ts-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;color:#111;letter-spacing:0.05em;line-height:1;}
+.ts-tag{font-size:11px;color:rgba(0,0,0,0.55);font-weight:600;letter-spacing:0.04em;margin-top:2px;}
+.form-input{width:100%;background:#1a1a1a;border:1.5px solid rgba(245,200,0,0.2);border-radius:10px;padding:14px 16px;color:#fff;font-size:15px;font-family:'Inter',sans-serif;outline:none;-webkit-appearance:none;}
+.form-input:focus{border-color:#F5C800;}
+.form-input::placeholder{color:rgba(255,255,255,0.25);}
+.time-sel{background:#1a1a1a;border:1.5px solid rgba(245,200,0,0.2);border-radius:10px;padding:13px 8px;color:rgba(255,255,255,0.7);font-size:13px;font-family:'Inter',sans-serif;cursor:pointer;text-align:center;font-weight:500;transition:all 0.15s;-webkit-appearance:none;}
+.time-sel.active{background:rgba(245,200,0,0.15);border-color:#F5C800;color:#F5C800;font-weight:700;}
+.restart-btn{background:none;border:none;color:rgba(255,255,255,0.25);font-size:13px;cursor:pointer;padding:8px 0;text-align:center;font-family:'Inter',sans-serif;}
+.svc{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-left:3px solid #F5C800;border-radius:8px;padding:11px 14px;}
+.svc-t{font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;}
+.svc-d{font-size:11px;color:rgba(255,255,255,0.55);}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- SCREEN 1: Landing -->
+  <div class="screen on" id="s1">
+    <div class="top-strip">
+      <div class="ts-logo">Buildwise Accounting</div>
+      <div class="ts-tag">Built for builders</div>
+    </div>
+
+    <div style="padding:36px 22px 24px;">
+      <div style="font-size:11px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.16em;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-block;width:20px;height:1px;background:rgba(245,200,0,0.4);"></span>
+        Making Tax Digital for Income Tax
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:78px;line-height:0.88;color:#fff;letter-spacing:0.01em;margin-bottom:8px;">
+        MTD IS<br>COMING.<br><span style="color:#F5C800;">ARE YOU</span><br><span style="-webkit-text-stroke:2px #F5C800;color:transparent;">READY?</span>
+      </div>
+      <div style="width:48px;height:3px;background:#F5C800;border-radius:2px;margin:20px 0 18px;"></div>
+      <div style="font-size:15px;color:rgba(255,255,255,0.8);line-height:1.7;">
+        Sole trader builders earning over <strong style="color:#fff;">£50k</strong> must now report to HMRC <strong style="color:#fff;">four times a year.</strong> Not sure where to start or how this affects you? <strong style="color:#fff;">Buildwise Accounting can help.</strong>
+      </div>
+    </div>
+
+    <div style="padding:0 22px;">
+      <div style="font-size:10px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.14em;margin-bottom:12px;">What we handle for you</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="svc"><div class="svc-t">MTD Registration</div><div class="svc-d">Registered with HMRC before the deadline hits</div></div>
+        <div class="svc"><div class="svc-t">MTD Quarterly Submissions</div><div class="svc-d">Filed for you, four times a year</div></div>
+        <div class="svc"><div class="svc-t">Invoices & Timesheets</div><div class="svc-d">Professionally prepared and issued promptly, keeping your cash flow on track</div></div>
+        <div class="svc"><div class="svc-t">Retention Tracking</div><div class="svc-d">Your money chased and claimed back</div></div>
+        <div class="svc"><div class="svc-t">Self Assessment</div><div class="svc-d">Your annual tax return handled with care and filed ahead of every deadline</div></div>
+        <div class="svc"><div class="svc-t">New Contractor Setup</div><div class="svc-d">Full registration for CIS, MTD and VAT (if applicable) — handled from start to finish</div></div>
+        <div class="svc"><div class="svc-t">Subcontractor Verification</div><div class="svc-d">Right deduction rate, no guessing</div></div>
+        <div class="svc"><div class="svc-t">CIS Monthly Returns</div><div class="svc-d">Submitted to HMRC every month, on schedule, without exception</div></div>
+        <div class="svc"><div class="svc-t">VAT Returns & Reverse Charge</div><div class="svc-d">Only if VAT registered</div></div>
+        <div class="svc"><div class="svc-t">Deadline Tracking</div><div class="svc-d">We watch every HMRC date so you don't have to</div></div>
+      </div>
+    </div>
+
+    <div style="padding:28px 22px 36px;">
+      <button onclick="goForm()" style="width:100%;background:#F5C800;color:#111;border:none;border-radius:12px;padding:18px;font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:0.05em;cursor:pointer;">SORT MY MTD WITH BUILDWISE &#8594;</button>
+      <div style="font-size:11px;color:rgba(255,255,255,0.25);text-align:center;margin-top:12px;">Built for builders, contractors and subbies</div>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: Form -->
+  <div class="screen" id="s2">
+    <div class="top-strip">
+      <div class="ts-logo">Buildwise Accounting</div>
+      <div class="ts-tag">Built for builders</div>
+    </div>
+    <div style="padding:28px 22px 36px;display:flex;flex-direction:column;gap:18px;">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:#F5C800;line-height:1;flex-shrink:0;">&#10003;</div>
+        <div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#fff;letter-spacing:0.03em;line-height:1.1;margin-bottom:5px;">LET'S GET IT <span style="color:#F5C800;">SORTED.</span></div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;">Leave your details and a member of our team will be in touch.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px;">Full Name</div>
+          <input class="form-input" type="text" id="f-name" placeholder="e.g. John Smith">
+        </div>
+        <div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px;">Contact Number</div>
+          <input class="form-input" type="tel" id="f-phone" placeholder="e.g. 07700 900000">
+        </div>
+        <div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px;">Email Address</div>
+          <input class="form-input" type="email" id="f-email" placeholder="e.g. john@example.com">
+        </div>
+        <div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px;">Preferred Time to Call</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <button class="time-sel" onclick="selectTime(this,'12:00 - 2:00pm')">12:00 — 2:00pm</button>
+            <button class="time-sel" onclick="selectTime(this,'2:00 - 4:00pm')">2:00 — 4:00pm</button>
+            <button class="time-sel" onclick="selectTime(this,'4:00 - 5:00pm')">4:00 — 5:00pm</button>
+            <button class="time-sel" onclick="selectTime(this,'5:00 - 7:00pm')">5:00 — 7:00pm</button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button onclick="submitForm()" style="width:100%;background:#F5C800;color:#111;border:none;border-radius:10px;padding:17px;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.05em;cursor:pointer;margin-bottom:10px;">SEND MY DETAILS &#8594;</button>
+        <div style="font-size:11px;color:rgba(255,255,255,0.25);text-align:center;">We don't share your details. Ever.</div>
+      </div>
+      <button class="restart-btn" onclick="goBack()">&#8592; Back</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 3: Thank you -->
+  <div class="screen" id="s3">
+    <div class="top-strip">
+      <div class="ts-logo">Buildwise Accounting</div>
+      <div class="ts-tag">Built for builders</div>
+    </div>
+    <div style="padding:60px 22px 36px;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:72px;color:#F5C800;line-height:1;">&#10003;</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:34px;color:#fff;letter-spacing:0.03em;line-height:1.1;">DETAILS RECEIVED.</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:280px;">Thank you. A member of the Buildwise team will be in touch with you shortly.</div>
+      <div style="background:#1a1a1a;border:1px solid rgba(245,200,0,0.2);border-radius:12px;padding:16px;width:100%;text-align:left;">
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:13px;color:rgba(255,255,255,0.75);"><div style="width:7px;height:7px;border-radius:50%;background:#F5C800;flex-shrink:0;"></div>info@buildwiseaccounting.co.uk</div>
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;font-size:13px;color:rgba(255,255,255,0.75);"><div style="width:7px;height:7px;border-radius:50%;background:#F5C800;flex-shrink:0;"></div>buildwiseaccounting.co.uk</div>
+      </div>
+      <button class="restart-btn" onclick="goRestart()">&#8592; Start again</button>
+    </div>
+  </div>
+
+</div>
+<script>
+var selectedTime='';
+function show(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('on');});document.getElementById(id).classList.add('on');window.scrollTo(0,0);}
+function goForm(){show('s2');}
+function goBack(){show('s1');}
+function selectTime(btn,t){selectedTime=t;document.querySelectorAll('.time-sel').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');}
+function submitForm(){
+  var name=document.getElementById('f-name').value.trim();
+  var phone=document.getElementById('f-phone').value.trim();
+  var email=document.getElementById('f-email').value.trim();
+  if(!name){alert('Please enter your full name.');return;}
+  if(!phone){alert('Please enter your contact number.');return;}
+  if(!email){alert('Please enter your email address.');return;}
+  if(!selectedTime){alert('Please select a preferred time to call.');return;}
+  show('s3');
+}
+function goRestart(){
+  selectedTime='';
+  document.querySelectorAll('.time-sel').forEach(function(b){b.classList.remove('active');});
+  var fn=document.getElementById('f-name');if(fn)fn.value='';
+  var fp=document.getElementById('f-phone');if(fp)fp.value='';
+  var fe=document.getElementById('f-email');if(fe)fe.value='';
+  show('s1');
+}
+</script>
+</body>
+</html>
