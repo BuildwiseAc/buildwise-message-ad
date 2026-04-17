@@ -28,8 +28,8 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;fo
 .time-sel.active{background:rgba(245,200,0,0.15);border-color:#F5C800;color:#F5C800;font-weight:700;}
 .restart-btn{background:none;border:none;color:rgba(255,255,255,0.25);font-size:13px;cursor:pointer;padding:8px 0;text-align:center;font-family:'Inter',sans-serif;}
 .svc{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-left:3px solid #F5C800;border-radius:8px;padding:11px 14px;}
-.svc-t{font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;}
-.svc-d{font-size:11px;color:rgba(255,255,255,0.55);}
+.svc-t{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px;}
+.svc-d{font-size:12px;color:rgba(255,255,255,0.55);}
 </style>
 </head>
 <body>
@@ -89,7 +89,7 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;fo
         <div style="font-family:'Bebas Neue',sans-serif;font-size:56px;color:#F5C800;line-height:1;flex-shrink:0;">&#10003;</div>
         <div>
           <div style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#fff;letter-spacing:0.03em;line-height:1.1;margin-bottom:5px;">LET'S GET IT <span style="color:#F5C800;">SORTED.</span></div>
-          <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;">Leave your details and a member of our team will be in touch.</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;">Leave your details and we will be in touch.</div>
         </div>
       </div>
 
@@ -115,6 +115,12 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;fo
             <button class="time-sel" onclick="selectTime(this,'5:00 - 7:00pm')">5:00 — 7:00pm</button>
           </div>
         </div>
+
+        <!-- Consent checkbox -->
+        <div style="display:flex;align-items:flex-start;gap:12px;background:#1a1a1a;border:1.5px solid rgba(245,200,0,0.2);border-radius:10px;padding:14px;">
+          <input type="checkbox" id="f-consent" style="width:18px;height:18px;margin-top:2px;accent-color:#F5C800;flex-shrink:0;cursor:pointer;">
+          <label for="f-consent" style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.6;cursor:pointer;">I agree to be contacted by Buildwise Accounting about relevant services and future offers.</label>
+        </div>
       </div>
 
       <div>
@@ -134,10 +140,9 @@ html,body{min-height:100%;background:#111;display:flex;justify-content:center;fo
     <div style="padding:60px 22px 36px;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;">
       <div style="font-family:'Bebas Neue',sans-serif;font-size:72px;color:#F5C800;line-height:1;">&#10003;</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:34px;color:#fff;letter-spacing:0.03em;line-height:1.1;">DETAILS RECEIVED.</div>
-      <div style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:280px;">Thank you. A member of the Buildwise team will be in touch with you shortly.</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:280px;">Thank you. We will be in touch with you shortly.</div>
       <div style="background:#1a1a1a;border:1px solid rgba(245,200,0,0.2);border-radius:12px;padding:16px;width:100%;text-align:left;">
-        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:13px;color:rgba(255,255,255,0.75);"><div style="width:7px;height:7px;border-radius:50%;background:#F5C800;flex-shrink:0;"></div>info@buildwiseaccounting.co.uk</div>
-        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;font-size:13px;color:rgba(255,255,255,0.75);"><div style="width:7px;height:7px;border-radius:50%;background:#F5C800;flex-shrink:0;"></div>buildwiseaccounting.co.uk</div>
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 0;font-size:13px;color:rgba(255,255,255,0.75);"><div style="width:7px;height:7px;border-radius:50%;background:#F5C800;flex-shrink:0;"></div>Contact: info@buildwiseaccounting.co.uk</div>
       </div>
       <button class="restart-btn" onclick="goRestart()">&#8592; Start again</button>
     </div>
@@ -154,6 +159,7 @@ function submitForm(){
   var name=document.getElementById('f-name').value.trim();
   var phone=document.getElementById('f-phone').value.trim();
   var email=document.getElementById('f-email').value.trim();
+  var consent=document.getElementById('f-consent').checked ? 'Yes' : 'No';
   if(!name){alert('Please enter your full name.');return;}
   if(!phone){alert('Please enter your contact number.');return;}
   if(!email){alert('Please enter your email address.');return;}
@@ -165,7 +171,7 @@ function submitForm(){
 
   fetch('https://script.google.com/macros/s/AKfycby0dfkiNN2JdQ1Z-jTLvnlq-M63BYwZlB7Ga57cqKy0awx45AI3l_9H3FXnWA7u3vxFfQ/exec',{
     method:'POST',
-    body:JSON.stringify({name:name,phone:phone,email:email,time:selectedTime})
+    body:JSON.stringify({name:name,phone:phone,email:email,time:selectedTime,consent:consent})
   })
   .then(function(){show('s3');})
   .catch(function(){show('s3');})
