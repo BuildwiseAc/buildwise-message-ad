@@ -169,7 +169,7 @@ function submitForm(){
   btn.disabled=true;
   btn.innerText='Sending...';
 
-  fetch('https://script.google.com/macros/s/AKfycbySl2QMSJuq3eUMdnkwN4BYI1UPafdNBpx8bSDAyj8nNgPr9d7B9Yf9vrHs19bkflfvlw/exec',{
+  fetch('https://script.google.com/macros/s/AKfycbwDjHFH-4v4ogd5wI2h7QNnN6bbXWPc6K4Im0JvmPhbWQcq5k61Jp1muPOWjT04n-RIqA/exec',{
     method:'POST',
     body:JSON.stringify({name:name,phone:phone,email:email,time:selectedTime,consent:consent})
   })
